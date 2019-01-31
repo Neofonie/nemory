@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <div class="wrapper">
-      <div class="card"
-           v-for="(card, index) in cards" v-bind:key="card.id" 
-           v-bind:class="{active: !card.showFace }" 
-           v-on:click="handleClick(card)">
-        <span class="text">{{card.id}}</span></div>
+      <div
+        class="card"
+        v-for="card in cards"
+        v-bind:key="card.id"
+        v-bind:class="{ active: !card.showFace }"
+        v-on:click="handleClick(card)"
+      >
+        <span class="text">{{ card.id }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -42,34 +46,30 @@ export default {
 };
 </script>
 
-
 <style lang="scss">
+.card {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  order: 1;
+  cursor: pointer;
+  height: 60px;
+  transition: all 0.4s ease;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .card {
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
-    order: 1;
-    cursor: pointer;
-    height:60px;
-    transition: all .4s ease;
+.active {
+  color: #e51826;
+  background: #e51826;
+  transform: rotateY(180deg);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .text {
+    display: none;
   }
-
-  .active {
-      color: #e51826;
-      background: #e51826;
-      transform: rotateY(180deg);
-
-      .text {
-        display: none;
-      }
-
-    }
+}
 </style>
