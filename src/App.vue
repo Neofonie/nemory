@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <speak-to-me />
+    <speak-to-me v-bind:onDetect="handleClick" />
     <div class="wrapper">
       <card
         v-for="card in cards"

@@ -11,6 +11,8 @@ import SpeakToMe from "speaktome-api/build/stm_web.min.js";
 export default {
   name: "speak-to-me",
 
+  props: ["onDetect"],
+
   data() {
     return {
       voice: {
@@ -29,6 +31,7 @@ export default {
           if (msg.data[0].text === parseInt(msg.data[0].text).toString()) {
             this.voice.confidence = msg.data[0].confidence;
             this.voice.detected = msg.data[0].text;
+            this.onDetect(msg.data[0].text);
           }
         }
         if (msg.state === "ready") {
