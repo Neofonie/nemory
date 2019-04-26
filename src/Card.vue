@@ -31,7 +31,6 @@ export default {
   cursor: pointer;
   height: 60px;
   transition: all 0.4s ease;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +38,8 @@ export default {
 
 .active {
   color: #e51826;
-  background: #e51826;
+  background-image: url(./assets/logo.png);
+  background-size: contain;
   transform: rotateY(180deg);
 
   .text {

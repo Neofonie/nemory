@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5>Voice detection:</h5>
+    <h5>Voice detection: {{ voice.state }}</h5>
     <p>{{ voice.confidence }} / {{ voice.detected }}</p>
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       voice: {
+        state: "",
         confidence: "",
         detected: ""
       }
@@ -26,12 +27,15 @@ export default {
     const stm = SpeakToMe({
       listener: msg => {
         console.log("listener", msg);
+        this.voice.state = msg.state;
+
         if (msg.data && msg.data.length > 0) {
-          console.log(msg.data[0].confidence + ": " + msg.data[0].text);
-          if (msg.data[0].text === parseInt(msg.data[0].text).toString()) {
+          const result = msg.data[0].text;
+          // is it a number ?
+          if (result === parseInt(result).toString()) {
             this.voice.confidence = msg.data[0].confidence;
-            this.voice.detected = msg.data[0].text;
-            this.onDetect(msg.data[0].text);
+            this.voice.detected = result;
+            this.onDetect(result);
           }
         }
         if (msg.state === "ready") {
@@ -41,6 +45,7 @@ export default {
     });
 
     stm.listen();
+    this.voice.state = "init";
   }
 };
 </script>
