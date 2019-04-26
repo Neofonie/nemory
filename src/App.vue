@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div>
+      <h5>Voice detection:</h5>
+      <p>{{ voice.confidence }} / {{ voice.detected }}</p>
+    </div>
     <div class="wrapper">
       <div
         class="card"
@@ -15,12 +19,19 @@
 </template>
 
 <script>
+import SpeakToMe from "speaktome-api/build/stm_web.min.js";
+
 export default {
   name: "app",
 
   data() {
     return {
       cards: [],
+
+      voice: {
+        confidence: "",
+        detected: ""
+      },
 
       matchingOptions: [
         { name: "Bier", pairs: 2 },
@@ -40,6 +51,26 @@ export default {
   },
 
   methods: {
+    activateVoice() {
+      const stm = SpeakToMe({
+        listener: msg => {
+          console.log("listener", msg);
+          if (msg.data && msg.data.length > 0) {
+            console.log(msg.data[0].confidence + ": " + msg.data[0].text);
+            if (msg.data[0].text === parseInt(msg.data[0].text).toString()) {
+              this.voice.confidence = msg.data[0].confidence;
+              this.voice.detected = msg.data[0].text;
+            }
+          }
+          if (msg.state === "ready") {
+            stm.listen();
+          }
+        }
+      });
+
+      stm.listen();
+    },
+
     populateBoard() {
       for (let i = 0; i <= 24; i++) {
         this.cards.push({ id: i, showFace: false });
@@ -56,6 +87,8 @@ export default {
   },
 
   mounted() {
+    this.activateVoice();
+
     this.populateBoard();
   }
 };
@@ -64,6 +97,7 @@ export default {
 <style lang="scss">
 #app {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
 }
@@ -82,7 +116,7 @@ export default {
     font-size: 150%;
     order: 1;
     cursor: pointer;
-    height: 60px;
+    height: 25px;
     transition: all 0.4s ease;
 
     display: flex;
