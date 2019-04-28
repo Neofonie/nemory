@@ -1,22 +1,24 @@
 <template>
   <div id="app">
     <div class="wrapper">
-      <div
-        class="card"
+      <card
         v-for="card in cards"
         v-bind:key="card.id"
-        v-bind:class="{ active: !card.showFace }"
-        v-on:click="handleClick(card)"
-      >
-        <span class="text">{{ card.id }}</span>
-      </div>
+        v-bind:label="card.id"
+        v-bind:showFace="card.showFace"
+        v-bind:onClick="handleClick"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import Card from "./Card";
+
 export default {
   name: "app",
+
+  components: { Card },
 
   data() {
     return {
@@ -46,11 +48,10 @@ export default {
       }
     },
 
-    handleClick(card) {
-      card.showFace = true;
-
-      setTimeout(function() {
-        card.showFace = false;
+    handleClick(id) {
+      this.cards[id].showFace = true;
+      setTimeout(() => {
+        this.cards[id].showFace = false;
       }, 2000);
     }
   },
@@ -64,6 +65,7 @@ export default {
 <style lang="scss">
 #app {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
 }
@@ -73,31 +75,5 @@ export default {
   display: grid;
   grid-template-columns: repeat(5, 100px);
   grid-gap: 10px;
-
-  .card {
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
-    order: 1;
-    cursor: pointer;
-    height: 60px;
-    transition: all 0.4s ease;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .active {
-    color: #e51826;
-    background: #e51826;
-    transform: rotateY(180deg);
-
-    .text {
-      display: none;
-    }
-  }
 }
 </style>
