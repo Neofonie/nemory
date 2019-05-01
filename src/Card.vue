@@ -1,7 +1,7 @@
 <template>
   <div
     class="card"
-    v-on:click="onClick($vnode.key)"
+    v-on:click="handleClick"
     v-bind:class="{ active: !model.showFace }"
   >
     <span v-if="model.label" class="text">{{ model.label }}</span>
@@ -15,7 +15,13 @@ export default {
 
   props: ["model", "onClick"],
 
-  methods: {},
+  methods: {
+    handleClick() {
+      if (!this.showFace) {
+        this.onClick(this.$vnode.key);
+      }
+    }
+  },
 
   mounted() {}
 };
