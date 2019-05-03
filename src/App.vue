@@ -23,7 +23,9 @@ export default {
 
   data() {
     return {
-      cards: []
+      cards: [],
+      first: null,
+      second: null
     };
   },
 
@@ -40,7 +42,7 @@ export default {
         arr.push({
           id: i,
           showFace: false,
-          image: config.matchingOptions[i].image
+          label: config.matchingOptions[i].name
         });
       }
 
@@ -48,15 +50,26 @@ export default {
     },
 
     handleClick(id) {
-      console.log(id);
-      this.cards[id].showFace = true;
+      if (!this.first) {
+        this.first = this.cards[id];
+        this.first.showFace = true;
+      } else if (!this.second) {
+        this.second = this.cards[id];
+        this.second.showFace = true;
 
-      /*
-      setTimeout(() => {
-        this.cards[id].showFace = false;
-      }, 2000);
-
-      */
+        if (this.first.id == this.second.id) {
+          console.log("matched!");
+          this.first = null;
+          this.second = null;
+        } else {
+          setTimeout(() => {
+            this.first.showFace = false;
+            this.second.showFace = false;
+            this.first = null;
+            this.second = null;
+          }, 500);
+        }
+      }
     }
   },
 

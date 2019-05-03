@@ -4,8 +4,11 @@
     v-on:click="handleClick"
     v-bind:class="{ active: !model.showFace }"
   >
+    <span class="text">{{ model.label }}</span>
+  <!--
     <span v-if="model.label" class="text">{{ model.label }}</span>
     <img v-if="model.image" class="text" :src="model.image" />
+  -->
   </div>
 </template>
 
@@ -17,7 +20,7 @@ export default {
 
   methods: {
     handleClick() {
-      if (!this.showFace) {
+      if (!this.model.showFace) {
         this.onClick(this.$vnode.key);
       }
     }
