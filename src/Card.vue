@@ -1,10 +1,14 @@
 <template>
   <div
     class="card"
-    v-on:click="onClick(label)"
-    v-bind:class="{ active: !showFace }"
+    v-on:click="handleClick"
+    v-bind:class="{ active: !model.showFace }"
   >
-    <span class="text">{{ label }}</span>
+    <span class="text">{{ model.label }}</span>
+  <!--
+    <span v-if="model.label" class="text">{{ model.label }}</span>
+    <img v-if="model.image" class="text" :src="model.image" />
+  -->
   </div>
 </template>
 
@@ -12,9 +16,15 @@
 export default {
   name: "card",
 
-  props: ["label", "showFace", "onClick"],
+  props: ["model", "onClick"],
 
-  methods: {},
+  methods: {
+    handleClick() {
+      if (!this.model.showFace) {
+        this.onClick(this.$vnode.key);
+      }
+    }
+  },
 
   mounted() {}
 };

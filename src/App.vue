@@ -2,10 +2,9 @@
   <div id="app">
     <div class="wrapper">
       <card
-        v-for="card in cards"
-        v-bind:key="card.id"
-        v-bind:label="card.id"
-        v-bind:showFace="card.showFace"
+        v-for="(card, index) in cards"
+        v-bind:key="index"
+        v-bind:model="card"
         v-bind:onClick="handleClick"
       />
     </div>
@@ -14,6 +13,8 @@
 
 <script>
 import Card from "./Card";
+import config from "./config";
+import util from "./util";
 
 export default {
   name: "app",
@@ -23,36 +24,52 @@ export default {
   data() {
     return {
       cards: [],
-
-      matchingOptions: [
-        { name: "Bier", pairs: 2 },
-        { name: "Cola", pairs: 2 },
-        { name: "Fanta", pairs: 2 },
-        { name: "Wasser", pairs: 2 },
-        { name: "Sprite", pairs: 2 },
-        { name: "Gin", pairs: 2 },
-        { name: "Tonic", pairs: 2 },
-        { name: "Wein", pairs: 2 },
-        { name: "Mate", pairs: 2 },
-        { name: "Wodka", pairs: 2 },
-        { name: "Eistee", pairs: 2 },
-        { name: "Saft", pairs: 2 }
-      ]
+      first: null,
+      second: null
     };
   },
 
   methods: {
     populateBoard() {
-      for (let i = 0; i <= 24; i++) {
-        this.cards.push({ id: i, showFace: false });
+      let arr = [];
+
+      for (let i = 0; i < config.matchingOptions.length; i++) {
+        arr.push({
+          id: i,
+          showFace: false,
+          label: config.matchingOptions[i].name
+        });
+        arr.push({
+          id: i,
+          showFace: false,
+          label: config.matchingOptions[i].name
+        });
       }
+
+      this.cards = util.shuffle(arr);
     },
 
     handleClick(id) {
-      this.cards[id].showFace = true;
-      setTimeout(() => {
-        this.cards[id].showFace = false;
-      }, 2000);
+      if (!this.first) {
+        this.first = this.cards[id];
+        this.first.showFace = true;
+      } else if (!this.second) {
+        this.second = this.cards[id];
+        this.second.showFace = true;
+
+        if (this.first.id == this.second.id) {
+          console.log("matched!");
+          this.first = null;
+          this.second = null;
+        } else {
+          setTimeout(() => {
+            this.first.showFace = false;
+            this.second.showFace = false;
+            this.first = null;
+            this.second = null;
+          }, 500);
+        }
+      }
     }
   },
 
