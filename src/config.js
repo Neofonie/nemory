@@ -1,6 +1,6 @@
 export default {
   matchingOptions: [
-    { name: "Veeck", image: "https://placekitten.com/100/100" },
+    { name: "Veeck", image: require("@/assets/people/veeck.jpg") },
     { name: "Tim", image: "https://placekitten.com/100/100" },
     { name: "Kai", image: "https://placekitten.com/100/100" },
     { name: "Willy", image: "https://placekitten.com/100/100" },

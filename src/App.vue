@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div class="wrapper">
+    <h1>Nemory</h1>
+    <div class="board">
       <card
         v-for="(card, index) in cards"
         v-bind:key="index"
@@ -42,7 +43,7 @@ export default {
         arr.push({
           id: i,
           showFace: false,
-          label: config.matchingOptions[i].name
+          image: config.matchingOptions[i].image
         });
       }
 
@@ -87,8 +88,7 @@ export default {
   align-items: center;
 }
 
-.wrapper {
-  width: 600px;
+.board {
   display: grid;
   grid-template-columns: repeat(5, 100px);
   grid-gap: 10px;

@@ -4,11 +4,8 @@
     v-on:click="handleClick"
     v-bind:class="{ active: !model.showFace }"
   >
-    <span class="text">{{ model.label }}</span>
-  <!--
     <span v-if="model.label" class="text">{{ model.label }}</span>
     <img v-if="model.image" class="text" :src="model.image" />
-  -->
   </div>
 </template>
 
@@ -33,21 +30,20 @@ export default {
 <style lang="scss">
 .card {
   background-color: #444;
-  color: #fff;
   border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
   padding: 20px;
   font-size: 150%;
-  order: 1;
-  cursor: pointer;
   height: 60px;
   transition: all 0.4s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
 }
 
 .active {
-  color: #e51826;
   background-image: url(./assets/logo.png);
   background-size: contain;
   transform: rotateY(180deg);
