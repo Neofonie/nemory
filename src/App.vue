@@ -58,7 +58,7 @@ export default {
         this.second = this.cards[id];
         this.second.showFace = true;
 
-        if (this.first.id == this.second.id) {
+        if (this.first.id === this.second.id) {
           console.log("matched!");
           this.first = null;
           this.second = null;
@@ -90,7 +90,10 @@ export default {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(5, 100px);
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
   grid-gap: 10px;
+  width: 100%;
+  max-width: 766px;
 }
 </style>
