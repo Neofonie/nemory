@@ -15,7 +15,10 @@
     "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "--- DEPLOYMENT --- ": "--------------",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "vue": "^2.6.10"
@@ -28,6 +31,7 @@
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2",
+    "gh-pages": "^2.0.1",
     "lint-staged": "^8.2.1",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
