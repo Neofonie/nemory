@@ -1,11 +1,15 @@
 <template>
   <div
-    class="card"
+    class="card h-20 bg-center bg-contain bg-no-repeat bg-neo-red cursor-pointer flex flex-col justify-center items-center text-white text-xl overflow-hidden rounded select-none"
     v-on:click="handleClick"
     v-bind:class="{ active: !model.showFace }"
   >
     <span v-if="model.label" class="text">{{ model.label }}</span>
-    <img v-if="model.image" class="image" :src="model.image" />
+    <img
+      v-if="model.image"
+      class="image max-w-full max-h-full"
+      :src="model.image"
+    />
   </div>
 </template>
 
@@ -29,27 +33,7 @@ export default {
 
 <style lang="scss">
 .card {
-  background-color: #e60024;
-  background-size: contain;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  //padding: 20px;
-  font-size: 150%;
-  height: 100px;
   transition: all 0.4s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  overflow: hidden;
-
-  .image {
-    max-width: 100%;
-    max-height: 100%;
-  }
 }
 
 .active {

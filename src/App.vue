@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <h1>Nemory</h1>
+  <div class="flex flex-col justify-center items-center">
+    <h1 class="font-sans text-2xl text-black">Nemory</h1>
     <div class="board">
       <card
         v-for="(card, index) in cards"
@@ -81,17 +81,10 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .board {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
   grid-gap: 10px;
   width: 100%;
   max-width: 766px;

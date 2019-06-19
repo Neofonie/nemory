@@ -12,6 +12,7 @@
     "Veeck <veeck@neofonie.de>"
   ],
   "scripts": {
+    "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -20,16 +21,17 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.7.0",
-    "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-service": "^3.8.4",
     "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2",
-    "lint-staged": "^8.1.6",
+    "lint-staged": "^8.2.1",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
+    "tailwindcss": "^1.0.4",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
