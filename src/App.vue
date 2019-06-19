@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-center items-center">
-    <h1 class="font-sans text-2xl text-black">Nemory</h1>
+    <h1 class="font-sans text-2xl text-black m-8">Nemory</h1>
     <div class="board">
       <card
         v-for="(card, index) in cards"
