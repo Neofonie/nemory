@@ -80,7 +80,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .board {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
