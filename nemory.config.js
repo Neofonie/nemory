@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   matchingOptions: [
     { name: "Veeck", image: require("@/assets/people/octo_veeck.png") },
     { name: "Tim", image: require("@/assets/people/octo_tim.png") },

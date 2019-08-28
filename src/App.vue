@@ -14,7 +14,7 @@
 
 <script>
 import Card from "./Card";
-import config from "./config";
+import config from "../nemory.config";
 import util from "./util";
 
 export default {
