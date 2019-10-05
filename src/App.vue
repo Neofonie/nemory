@@ -9,6 +9,12 @@
         v-bind:onClick="handleClick"
       />
     </div>
+    <button
+      v-on:click="resetBoard"
+      class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 mx-2 my-3 rounded"
+    >
+      reset
+    </button>
   </div>
 </template>
 
@@ -48,6 +54,10 @@ export default {
       }
 
       this.cards = util.shuffle(arr);
+    },
+
+    resetBoard() {
+      this.populateBoard();
     },
 
     handleClick(id) {
