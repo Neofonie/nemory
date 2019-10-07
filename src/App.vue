@@ -54,6 +54,8 @@ export default {
       }
 
       this.cards = util.shuffle(arr);
+      this.first = null;
+      this.second = null;
     },
 
     resetBoard() {
