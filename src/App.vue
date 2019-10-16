@@ -1,7 +1,8 @@
 <template>
-  <div class="flex flex-col justify-center items-center">
+  <div class="flex flex-col justify-center items-center m-4">
     <h1 class="font-sans text-2xl text-black m-8">Nemory</h1>
-    <div class="board">
+    <h2 class="font-sans text-1xl text-black m-4">Score: {{ score }}</h2>
+    <div class="board m-4">
       <card
         v-for="(card, index) in cards"
         v-bind:key="index"
@@ -11,7 +12,7 @@
     </div>
     <button
       v-on:click="resetBoard"
-      class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 mx-2 my-3 rounded"
+      class="bg-red-600 hover:bg-red-700 text-white uppercase p-2 m-4 rounded"
     >
       reset
     </button>
@@ -32,7 +33,8 @@ export default {
     return {
       cards: [],
       first: null,
-      second: null
+      second: null,
+      score: 0
     };
   },
 
@@ -56,6 +58,7 @@ export default {
       this.cards = util.shuffle(arr);
       this.first = null;
       this.second = null;
+      this.score = 0;
     },
 
     resetBoard() {
@@ -74,6 +77,7 @@ export default {
           console.log("matched!");
           this.first = null;
           this.second = null;
+          this.score++;
         } else {
           setTimeout(() => {
             this.first.showFace = false;
