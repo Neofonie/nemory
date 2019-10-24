@@ -2,6 +2,9 @@
   <div class="flex flex-col justify-center items-center m-4">
     <h1 class="font-sans text-2xl text-black m-8">Nemory</h1>
     <h2 class="font-sans text-1xl text-black m-4">Score: {{ score }}</h2>
+    <h2 class="font-sans text-1xl text-black m-4">
+      Time tracking: {{ getTime() }}
+    </h2>
     <div class="board m-4">
       <card
         v-for="(card, index) in cards"
@@ -34,7 +37,8 @@ export default {
       cards: [],
       first: null,
       second: null,
-      score: 0
+      score: 0,
+      time: 0
     };
   },
 
@@ -59,10 +63,41 @@ export default {
       this.first = null;
       this.second = null;
       this.score = 0;
+
+      this.createCounter();
+    },
+
+    createCounter() {
+      this.time = 0;
+      this.counter = setInterval(() => {
+        this.time++;
+      }, 100);
+    },
+
+    destroyCounter() {
+      clearInterval(this.counter);
+    },
+
+    getTime() {
+      let seconds = this.time / 10;
+      let minutes = 0;
+      if (seconds >= 60) {
+        minutes = Math.floor(seconds / 60);
+        seconds = seconds % 60;
+        return (
+          minutes.toFixed(0) + " minute(s) " + seconds.toFixed(1) + " seconds"
+        );
+      }
+      return seconds.toFixed(1) + " seconds";
     },
 
     resetBoard() {
+      this.destroyCounter();
       this.populateBoard();
+    },
+
+    won() {
+      this.destroyCounter();
     },
 
     handleClick(id) {
@@ -86,6 +121,9 @@ export default {
             this.second = null;
           }, 500);
         }
+      }
+      if (this.score >= this.cards.length / 2) {
+        this.won();
       }
     }
   },
