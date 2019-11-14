@@ -1,33 +1,33 @@
 <template>
   <div class="flex flex-col justify-center items-center m-4">
-    <h1 class="font-sans text-2xl text-black m-8">Nemory</h1>
-    <h2 class="font-sans text-1xl text-black m-4">Score: {{ score }}</h2>
+    <h1 class="m-8">Nemory</h1>
+    <p class="m-4">Score: {{ score }}</p>
     <div class="board m-4">
-      <card
+      <Card
         v-for="(card, index) in cards"
         v-bind:key="index"
         v-bind:model="card"
         v-bind:onClick="handleClick"
       />
     </div>
-    <button
-      v-on:click="resetBoard"
-      class="bg-red-600 hover:bg-red-700 text-white uppercase p-2 m-4 rounded"
+    <Button v-bind:onClick="resetBoard" v-bind:label="'reset'" />
+    <hr class="w-full m-4" />
+    <a href="https://www.neofonie.de/english/#jobs_anchor" target="blank"
+      >We're hiring!</a
     >
-      reset
-    </button>
   </div>
 </template>
 
 <script>
-import Card from "./Card";
+import Button from "./components/Button";
+import Card from "./components/Card";
 import config from "../nemory.config";
 import util from "./util";
 
 export default {
   name: "app",
 
-  components: { Card },
+  components: { Button, Card },
 
   data() {
     return {

@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "card",
+  name: "Card",
 
   props: ["model", "onClick"],
 
@@ -37,7 +37,7 @@ export default {
 }
 
 .active {
-  background-image: url(./assets/logo.png);
+  background-image: url(../assets/logo.png);
   transform: rotateY(180deg);
 
   .image,
