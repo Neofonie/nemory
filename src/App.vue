@@ -74,7 +74,6 @@ export default {
         this.second.showFace = true;
 
         if (this.first.id === this.second.id) {
-          console.log("matched!");
           this.first = null;
           this.second = null;
           this.score++;
