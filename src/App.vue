@@ -2,7 +2,7 @@
   <div class="flex flex-col justify-center items-center m-4">
     <h1 class="m-8">Nemory</h1>
     <p class="m-4">Score: {{ score }}</p>
-    <div class="board m-4">
+    <div class="board m-4 w-full max-w-3/4">
       <Card
         v-for="(card, index) in cards"
         v-bind:key="index"
@@ -101,7 +101,5 @@ export default {
   grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
   grid-gap: 10px;
-  width: 100%;
-  max-width: 766px;
 }
 </style>

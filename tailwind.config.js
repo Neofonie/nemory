@@ -13,6 +13,11 @@ module.exports = {
       "6xl": "4.25rem",
       ...defaultTheme.fontSize
     },
+    maxWidth: {
+      "1/4": "25%",
+      "1/2": "50%",
+      "3/4": "75%"
+    },
     extend: {
       colors: {
         "neo-black": "#695F5F",
