@@ -10,7 +10,7 @@
         v-bind:onClick="handleClick"
       />
     </div>
-    <Button v-bind:onClick="resetBoard" v-bind:label="'reset'" />
+    <Button class="m-4" v-bind:onClick="resetBoard" v-bind:label="'reset'" />
     <hr class="w-full m-4" />
     <a href="https://www.neofonie.de/english/#jobs_anchor" target="blank"
       >We're hiring!</a

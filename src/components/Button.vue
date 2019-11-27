@@ -1,8 +1,5 @@
 <template>
-  <button
-    class="bg-neo-red hover:bg-red-700 text-white uppercase p-2 m-4 rounded"
-    v-on:click="onClick"
-  >
+  <button class="neo-btn neo-btn--red uppercase" v-on:click="onClick">
     {{ label }}
   </button>
 </template>
