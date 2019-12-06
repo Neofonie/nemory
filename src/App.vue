@@ -1,8 +1,14 @@
 <template>
-  <div class="flex flex-col justify-center items-center m-4">
-    <h1 class="m-8">Nemory</h1>
-    <p class="m-4">Score: {{ score }}</p>
-    <div class="board m-4 w-full max-w-3/4">
+  <div class="app">
+    <h1 class="app__title">Nemory</h1>
+
+    <div class="app__settings">
+      <h2>Settings</h2>
+      <input type="number" />
+      <Button class="m-4" v-bind:onClick="resetBoard" v-bind:label="'reset'" />
+    </div>
+
+    <div class="app__board">
       <Card
         v-for="(card, index) in cards"
         v-bind:key="index"
@@ -10,11 +16,18 @@
         v-bind:onClick="handleClick"
       />
     </div>
-    <Button class="m-4" v-bind:onClick="resetBoard" v-bind:label="'reset'" />
-    <hr class="w-full m-4" />
-    <a href="https://www.neofonie.de/english/#jobs_anchor" target="blank"
-      >We're hiring!</a
-    >
+
+    <div class="app__control">
+      <h2>Score</h2>
+      <p class="m-4">{{ score }}</p>
+    </div>
+
+    <div class="app__footer">
+      <hr class="m-4" />
+      <a href="https://www.neofonie.de/english/#jobs_anchor" target="blank"
+        >We're hiring!</a
+      >
+    </div>
   </div>
 </template>
 
@@ -96,10 +109,42 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.board {
+.app {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
+  grid-template-columns: 1fr 200px 760px 200px 1fr;
+  grid-template-areas:
+    ". title title title ."
+    ". settings board control ."
+    ". footer footer footer .";
   grid-gap: 10px;
+
+  &__title {
+    grid-area: title;
+    @apply text-center;
+  }
+
+  &__settings {
+    grid-area: settings;
+  }
+
+  &__control {
+    //flex flex-col justify-center items-center m-4
+    grid-area: control;
+    @apply text-right;
+  }
+
+  &__board {
+    grid-area: board;
+    //m-4 w-full max-w-3/4
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
+    grid-gap: 10px;
+  }
+
+  &__footer {
+    grid-area: footer;
+    @apply text-center;
+  }
 }
 </style>
