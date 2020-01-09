@@ -1,11 +1,10 @@
 <template>
   <div class="app">
-    <h1 class="app__title">Nemory</h1>
+    <h1 class="app__title mb-8">Nemory</h1>
 
     <div class="app__settings">
-      <h2>Settings</h2>
-      <input type="number" />
-      <Button class="m-4" v-bind:onClick="resetBoard" v-bind:label="'reset'" />
+      <h2 class="mb-4">Settings</h2>
+      <Button v-bind:onClick="resetBoard" v-bind:label="'reset'" />
     </div>
 
     <div class="app__board">
@@ -111,12 +110,12 @@ export default {
 <style scoped lang="scss">
 .app {
   display: grid;
-  grid-template-columns: 1fr 200px 760px 200px 1fr;
+  grid-template-columns: 10px 200px 1fr 200px 10px;
   grid-template-areas:
     ". title title title ."
-    ". settings board control ."
+    ". control board settings."
     ". footer footer footer .";
-  grid-gap: 10px;
+  grid-gap: 15px;
 
   &__title {
     grid-area: title;
@@ -125,21 +124,19 @@ export default {
 
   &__settings {
     grid-area: settings;
+    @apply text-right;
   }
 
   &__control {
-    //flex flex-col justify-center items-center m-4
     grid-area: control;
-    @apply text-right;
   }
 
   &__board {
     grid-area: board;
-    //m-4 w-full max-w-3/4
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
-    grid-gap: 10px;
+    grid-gap: 15px;
   }
 
   &__footer {

@@ -36,6 +36,7 @@ module.exports = {
     function({ addBase, config }) {
       addBase({
         body: {
+          backgroundColor: "#EFEEEE",
           color: config("theme.colors.neo-black"),
           fontFamily: config("theme.fontFamily.neo"),
           fontSize: config("theme.fontSize.base"),
