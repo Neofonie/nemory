@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card h-20 bg-center bg-contain bg-no-repeat bg-neo-red cursor-pointer flex flex-col justify-center items-center text-white text-xl overflow-hidden rounded select-none"
+    class="card h-20 bg-center bg-contain bg-no-repeat bg-neo-red cursor-pointer flex flex-col justify-center items-center text-white text-xl overflow-hidden rounded-lg select-none"
     v-on:click="handleClick"
     v-bind:class="{ active: !model.showFace }"
   >
@@ -33,6 +33,7 @@ export default {
 
 <style scoped lang="scss">
 .card {
+  box-shadow: 5px 5px 15px #a09f9f, -5px -5px 15px #ffffff;
   transition: all 0.4s ease;
 }
 
