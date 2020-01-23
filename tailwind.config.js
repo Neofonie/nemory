@@ -98,12 +98,23 @@ module.exports = {
             backgroundColor: config("theme.colors.red.700")
           }
         },
+        ".neo-input": {
+          backgroundColor: config("theme.colors.gray.200"),
+          borderColor: config("theme.colors.neo-grey"),
+          borderRadius: config("theme.borderRadius.default"),
+          borderWidth: config("theme.borderWidth.default"),
+          padding: `${config("theme.spacing.1")} ${config("theme.spacing.2")}`,
+          height: config("theme.spacing.10")
+        },
         ".neo-select": {
           backgroundColor: config("theme.colors.gray.200"),
           borderColor: config("theme.colors.neo-grey"),
           borderRadius: config("theme.borderRadius.default"),
           borderWidth: config("theme.borderWidth.default"),
           padding: `${config("theme.spacing.1")} ${config("theme.spacing.2")}`,
+          height: config("theme.spacing.10")
+        },
+        ".neo-checkbox": {
           height: config("theme.spacing.10")
         }
       });
