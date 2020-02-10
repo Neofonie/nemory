@@ -3,7 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   theme: {
     fontFamily: {
-      neo: ["Camingo", "Tahoma", "Arial"]
+      display: ["Camingo", "Source Sans Pro", "Arial", "sans-serif"]
     },
     fontSize: {
       base: "1.125rem",
@@ -38,7 +38,6 @@ module.exports = {
         body: {
           backgroundColor: "#EFEEEE",
           color: config("theme.colors.neo-black"),
-          fontFamily: config("theme.fontFamily.neo"),
           fontSize: config("theme.fontSize.base"),
           lineHeight: config("theme.lineHeight.none")
         },

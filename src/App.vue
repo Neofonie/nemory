@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app  font-display">
     <h1 class="app__title mb-8">Nemory</h1>
 
     <div class="app__settings">
