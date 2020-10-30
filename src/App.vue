@@ -67,20 +67,22 @@ export default {
         .shuffle([...config.matchingOptions])
         .splice(0, numPairs);
 
-      // populate cards
-      this.cards = [];
-      for (let i = 0; i < shuffledConfig.length; i++) {
-        this.cards.push({
-          id: i,
-          showFace: false,
-          label: shuffledConfig[i].name
-        });
-        this.cards.push({
-          id: i,
-          showFace: false,
-          image: shuffledConfig[i].image
-        });
-      }
+      // populate cards and shuffle them again
+      this.cards = util.shuffle(
+        shuffledConfig.reduce((result, item, index) => {
+          result.push({
+            id: index,
+            showFace: false,
+            label: item.name
+          });
+          result.push({
+            id: index,
+            showFace: false,
+            image: item.image
+          });
+          return result;
+        }, [])
+      );
 
       this.first = null;
       this.second = null;
