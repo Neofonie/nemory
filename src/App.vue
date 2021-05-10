@@ -13,10 +13,6 @@
       <Button :on-click="resetBoard" :label="'reset'" />
     </div>
 
-    <h2 class="font-sans text-1xl text-black m-4">
-      Time tracking: {{ getTime() }}
-    </h2>
-
     <div class="app__board">
       <Card
         v-for="(card, index) in cards"
@@ -32,6 +28,9 @@
     <div class="app__control">
       <h2>Score</h2>
       <p class="m-4">{{ score }}</p>
+
+      <h2>Time</h2>
+      <p class="m-4">{{ getTime() }}</p>
     </div>
 
     <div class="app__footer text-center">
@@ -95,12 +94,10 @@ export default {
       this.first = null;
       this.second = null;
       this.score = 0;
-
-      this.createCounter();
+      this.time = 0;
     },
 
     createCounter() {
-      this.time = 0;
       this.counter = setInterval(() => {
         this.time++;
       }, 100);
@@ -124,6 +121,7 @@ export default {
     },
 
     resetBoard() {
+      this.time = 0;
       this.destroyCounter();
       this.populateBoard();
     },
@@ -133,6 +131,9 @@ export default {
     },
 
     handleClick(id) {
+      if (this.time === 0) {
+        this.createCounter();
+      }
       if (!this.first) {
         this.first = this.cards[id];
         this.first.showFace = true;
