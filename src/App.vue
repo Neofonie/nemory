@@ -1,5 +1,5 @@
 <template>
-  <div class="app  font-display">
+  <div class="app font-display">
     <h1 class="app__title mb-8">Nemory</h1>
 
     <div class="app__settings">
@@ -7,18 +7,20 @@
 
       <label class="mb-4 flex">
         <span class="pr-4 w-2/3"> Number of pairs:</span>
-        <input class="neo-input w-1/3" type="number" v-model="maxPairs" />
+        <input v-model="maxPairs" class="neo-input w-1/3" type="number" />
       </label>
 
-      <Button v-bind:onClick="resetBoard" v-bind:label="'reset'" />
+      <Button :on-click="resetBoard" :label="'reset'" />
     </div>
 
     <div class="app__board">
       <Card
         v-for="(card, index) in cards"
-        v-bind:key="index"
-        v-bind:model="card"
-        v-bind:onClick="handleClick"
+        v-bind="{
+          index: index,
+          model: card,
+          onClick: handleClick,
+        }"
       />
     </div>
 
@@ -37,13 +39,13 @@
 </template>
 
 <script>
-import Button from "./components/Button";
-import Card from "./components/Card";
+import Button from "./components/Button.vue";
+import Card from "./components/Card.vue";
 import config from "../nemory.config";
 import util from "./util";
 
 export default {
-  name: "app",
+  name: "App",
 
   components: { Button, Card },
 
@@ -53,8 +55,12 @@ export default {
       first: null,
       second: null,
       maxPairs: 10,
-      score: 0
+      score: 0,
     };
+  },
+
+  mounted() {
+    this.populateBoard();
   },
 
   methods: {
@@ -73,12 +79,12 @@ export default {
           result.push({
             id: index,
             showFace: false,
-            label: item.name
+            label: item.name,
           });
           result.push({
             id: index,
             showFace: false,
-            image: item.image
+            image: item.image,
           });
           return result;
         }, [])
@@ -114,12 +120,8 @@ export default {
           }, 500);
         }
       }
-    }
+    },
   },
-
-  mounted() {
-    this.populateBoard();
-  }
 };
 </script>
 

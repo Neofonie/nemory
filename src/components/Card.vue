@@ -1,8 +1,20 @@
 <template>
   <div
-    class="card h-20 bg-center bg-contain bg-no-repeat bg-neo-red cursor-pointer flex flex-col justify-center items-center text-white text-xl overflow-hidden rounded-lg select-none"
-    v-on:click="handleClick"
-    v-bind:class="{ active: !model.showFace }"
+    class="
+      card
+      h-20
+      bg-center bg-contain bg-no-repeat bg-neo-red
+      cursor-pointer
+      flex flex-col
+      justify-center
+      items-center
+      text-white text-xl
+      overflow-hidden
+      rounded-lg
+      select-none
+    "
+    :class="{ active: !model.showFace }"
+    @click="handleClick"
   >
     <span v-if="model.label" class="text">{{ model.label }}</span>
     <img
@@ -17,17 +29,17 @@
 export default {
   name: "Card",
 
-  props: ["model", "onClick"],
+  props: ["model", "index", "onClick"],
+
+  mounted() {},
 
   methods: {
     handleClick() {
       if (!this.model.showFace) {
-        this.onClick(this.$vnode.key);
+        this.onClick(this.index);
       }
-    }
+    },
   },
-
-  mounted() {}
 };
 </script>
 

@@ -1,6 +1,8 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
+  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
       display: ["Camingo", "Source Sans Pro", "Arial", "sans-serif"]
@@ -31,7 +33,9 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [
     function({ addBase, config }) {
       addBase({
@@ -119,4 +123,4 @@ module.exports = {
       });
     }
   ]
-};
+}
