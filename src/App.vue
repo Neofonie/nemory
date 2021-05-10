@@ -21,6 +21,7 @@
           model: card,
           onClick: handleClick,
         }"
+        :key="index"
       />
     </div>
 

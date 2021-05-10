@@ -25,7 +25,20 @@
 export default {
   name: "Card",
 
-  props: ["model", "index", "onClick"],
+  props: {
+    model: {
+      type: Object,
+      required: true,
+    },
+    index: {
+      type: Number,
+      required: true,
+    },
+    onClick: {
+      type: Function,
+      required: true,
+    },
+  },
 
   mounted() {},
 

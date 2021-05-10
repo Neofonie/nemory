@@ -8,7 +8,16 @@
 export default {
   name: "Button",
 
-  props: ["label", "onClick"],
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
+    onClick: {
+      type: Function,
+      required: true,
+    },
+  },
 
   mounted() {},
 };
