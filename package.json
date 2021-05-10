@@ -1,7 +1,7 @@
 {
   "name": "nemory",
   "description": "A Vue.js project",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "repository": "github:Neofonie/nemory",
   "author": {
@@ -13,34 +13,30 @@
     "Veeck <veeck@neofonie.de>"
   ],
   "scripts": {
-    "--- NPM SCRIPTS ---------- ": "--------------",
-    "start": "vue-cli-service serve",
-    "test": "echo 'No tests specified'; exit 0;",
-    "--- VUE CLI SCRIPTS ------ ": "--------------",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "start": "vite",
+    "build": "vite build",
+    "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore . --fix",
+    "lint:style": "stylelint src/**/*.{css,scss,vue}"
   },
   "dependencies": {
-    "vue": "^2.6.12"
+    "vue": "^3.0.4"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^3.0.0",
-    "@vue/cli-plugin-babel": "^4.5.12",
-    "@vue/cli-plugin-eslint": "^4.5.12",
-    "@vue/cli-service": "^4.5.12",
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
-    "autoprefixer": "^9.8.6",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.23.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.8.0",
-    "lint-staged": "^10.5.4",
-    "node-sass": "^4.14.1",
-    "purgecss": "^3.0.0",
-    "sass-loader": "^10.1.0",
-    "tailwindcss": "^1.9.6",
-    "vue-template-compiler": "^2.6.12"
+    "autoprefixer": "^10.2.5",
+    "eslint": "^7.26.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "postcss": "^8.2.14",
+    "prettier": "^2.3.0",
+    "sass": "^1.32.12",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-standard": "^22.0.0",
+    "tailwindcss": "^2.1.2",
+    "vite": "^2.2.4"
   },
   "browserslist": [
     "last 2 versions",
@@ -52,13 +48,8 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{css,scss,vue}": "stylelint --fix",
+    "*": "prettier -w -u"
   }
 }

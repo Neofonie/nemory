@@ -1,5 +1,5 @@
 <template>
-  <button class="button neo-btn neo-btn--red uppercase" v-on:click="onClick">
+  <button class="button neo-btn neo-btn--red uppercase" @click="onClick">
     {{ label }}
   </button>
 </template>
@@ -8,14 +8,23 @@
 export default {
   name: "Button",
 
-  props: ["label", "onClick"],
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
+    onClick: {
+      type: Function,
+      required: true,
+    },
+  },
 
-  mounted() {}
+  mounted() {},
 };
 </script>
 
 <style scoped lang="scss">
 .button {
-  box-shadow: 5px 5px 15px #a09f9f, -5px -5px 15px #ffffff;
+  box-shadow: 5px 5px 15px #a09f9f, -5px -5px 15px #fff;
 }
 </style>

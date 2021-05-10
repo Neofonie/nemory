@@ -2,7 +2,7 @@ export default {
   /**
    * Randomly shuffle an array
    * https://stackoverflow.com/a/2450976/1293256
-   * @param  {Array} array The array to shuffle
+   * @param {Array} array The array to shuffle
    * @return {Array} the shuffled array
    */
   shuffle(array) {
