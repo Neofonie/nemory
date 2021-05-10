@@ -16,6 +16,6 @@ export default {
 
 <style scoped lang="scss">
 .button {
-  box-shadow: 5px 5px 15px #a09f9f, -5px -5px 15px #ffffff;
+  box-shadow: 5px 5px 15px #a09f9f, -5px -5px 15px #fff;
 }
 </style>

@@ -31,9 +31,7 @@
 
     <div class="app__footer text-center">
       <hr class="m-4" />
-      <a href="https://www.neofonie.de/english/#jobs_anchor" target="blank"
-        >We're hiring!</a
-      >
+      <a href="https://www.neofonie.de/english/#jobs_anchor" target="blank">We're hiring!</a>
     </div>
   </div>
 </template>
@@ -69,9 +67,7 @@ export default {
       let numPairs = Math.min(config.matchingOptions.length, this.maxPairs);
 
       // shuffle our config and only use the first x items
-      let shuffledConfig = util
-        .shuffle([...config.matchingOptions])
-        .splice(0, numPairs);
+      let shuffledConfig = util.shuffle([...config.matchingOptions]).splice(0, numPairs);
 
       // populate cards and shuffle them again
       this.cards = util.shuffle(
@@ -131,17 +127,19 @@ export default {
   grid-template-columns: 10px 200px 1fr 200px 10px;
   grid-template-areas:
     ". title title title ."
-    ". control board settings."
+    ". control board settings ."
     ". footer footer footer .";
   grid-gap: 15px;
 
   &__title {
     grid-area: title;
+
     @apply text-center;
   }
 
   &__settings {
     grid-area: settings;
+
     @apply text-right;
   }
 

@@ -17,11 +17,7 @@
     @click="handleClick"
   >
     <span v-if="model.label" class="text">{{ model.label }}</span>
-    <img
-      v-if="model.image"
-      class="image max-w-full max-h-full"
-      :src="model.image"
-    />
+    <img v-if="model.image" class="image max-w-full max-h-full" :src="model.image" />
   </div>
 </template>
 
@@ -45,7 +41,7 @@ export default {
 
 <style scoped lang="scss">
 .card {
-  box-shadow: 5px 5px 15px #a09f9f, -5px -5px 15px #ffffff;
+  box-shadow: 5px 5px 15px #a09f9f, -5px -5px 15px #fff;
   transition: all 0.4s ease;
 }
 
