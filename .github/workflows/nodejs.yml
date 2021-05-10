@@ -7,23 +7,23 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
 
     - name: Setup Node
       uses: actions/setup-node@v1
+      with:
+        node-version: '14'
 
-    - name: Run npm install and build
+    - name: Run npm ci and build
       run: |
         npm ci
-        npm run build --if-present
+        npm run build
 
-    - name: Deploy to gh-pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+    - name: Deploy to gh-pages 🚀
+      uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-        ACCESS_TOKEN: ${{ secrets.ACTION_ACCESS_TOKEN }}
-        BASE_BRANCH: main # The branch the action should deploy from.
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: dist # The folder the action should deploy.
-        CLEAN: true
-        SINGLE_COMMIT: true
+        branch: gh-pages # The branch the action should deploy to.
+        folder: dist # The folder the action should deploy.
+        clean: true
+        single-commit: true
