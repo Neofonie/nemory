@@ -28,6 +28,9 @@
     <div class="app__control">
       <h2>Score</h2>
       <p class="m-4">{{ score }}</p>
+
+      <h2>Time</h2>
+      <p class="m-4">{{ getTime() }}</p>
     </div>
 
     <div class="app__footer text-center">
@@ -55,6 +58,7 @@ export default {
       second: null,
       maxPairs: 10,
       score: 0,
+      time: 0
     };
   },
 
@@ -90,13 +94,46 @@ export default {
       this.first = null;
       this.second = null;
       this.score = 0;
+      this.time = 0;
+    },
+
+    createCounter() {
+      this.counter = setInterval(() => {
+        this.time++;
+      }, 100);
+    },
+
+    destroyCounter() {
+      clearInterval(this.counter);
+    },
+
+    getTime() {
+      let seconds = this.time / 10;
+      let minutes = 0;
+      if (seconds >= 60) {
+        minutes = Math.floor(seconds / 60);
+        seconds = seconds % 60;
+        return (
+          minutes.toFixed(0) + " minute(s) " + seconds.toFixed(1) + " seconds"
+        );
+      }
+      return seconds.toFixed(1) + " seconds";
     },
 
     resetBoard() {
+      this.time = 0;
+      this.destroyCounter();
       this.populateBoard();
     },
 
+    won() {
+      this.destroyCounter();
+    },
+
     handleClick(id) {
+      if (this.time === 0) {
+        this.createCounter();
+      }
       if (!this.first) {
         this.first = this.cards[id];
         this.first.showFace = true;
@@ -117,7 +154,10 @@ export default {
           }, 500);
         }
       }
-    },
+      if (this.score >= this.cards.length / 2) {
+        this.won();
+      }
+    }
   },
 };
 </script>
