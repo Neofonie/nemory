@@ -7,7 +7,7 @@
 
       <label class="mb-4 flex">
         <span class="pr-4 w-2/3"> Number of pairs:</span>
-        <input v-model="maxPairs" class="neo-input w-1/3" type="number" />
+        <input v-model="maxPairs" class="neo-input w-1/3" type="number" min="1" />
       </label>
 
       <Button :on-click="resetBoard" :label="'reset'" />
@@ -58,7 +58,7 @@ export default {
       second: null,
       maxPairs: 10,
       score: 0,
-      time: 0
+      time: 0,
     };
   },
 
@@ -113,9 +113,7 @@ export default {
       if (seconds >= 60) {
         minutes = Math.floor(seconds / 60);
         seconds = seconds % 60;
-        return (
-          minutes.toFixed(0) + " minute(s) " + seconds.toFixed(1) + " seconds"
-        );
+        return minutes.toFixed(0) + " minute(s) " + seconds.toFixed(1) + " seconds";
       }
       return seconds.toFixed(1) + " seconds";
     },
@@ -157,7 +155,7 @@ export default {
       if (this.score >= this.cards.length / 2) {
         this.won();
       }
-    }
+    },
   },
 };
 </script>
