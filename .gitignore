@@ -1,9 +1,10 @@
+# Directories
 .DS_Store
 node_modules
 /dist
 /dist-ssr
 
-# local env files
+# Local env files
 .env.local
 .env.*.local
 
@@ -20,3 +21,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Other stuff
+.eslintcache
