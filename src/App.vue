@@ -10,11 +10,11 @@
         <input v-model="maxPairs" class="neo-input w-1/3" type="number" min="1" />
       </label>
 
-      <Button :on-click="resetBoard" :label="'reset'" />
+      <NeoButton :on-click="resetBoard" :label="'reset'" />
     </div>
 
     <div class="app__board">
-      <Card
+      <NemoryCard
         v-for="(card, index) in cards"
         v-bind="{
           index: index,
@@ -41,15 +41,15 @@
 </template>
 
 <script>
-import Button from "./components/Button.vue";
-import Card from "./components/Card.vue";
+import NeoButton from "./components/NeoButton.vue";
+import NemoryCard from "./components/NemoryCard.vue";
 import config from "../nemory.config";
 import util from "./util";
 
 export default {
   name: "App",
 
-  components: { Button, Card },
+  components: { NeoButton, NemoryCard },
 
   data() {
     return {

@@ -1,18 +1,6 @@
 <template>
   <div
-    class="
-      card
-      h-20
-      bg-center bg-contain bg-no-repeat bg-neo-red
-      cursor-pointer
-      flex flex-col
-      justify-center
-      items-center
-      text-white text-xl
-      overflow-hidden
-      rounded-lg
-      select-none
-    "
+    class="card h-20 bg-center bg-contain bg-no-repeat bg-neo-red cursor-pointer flex flex-col justify-center items-center text-white text-xl overflow-hidden rounded-lg select-none"
     :class="{ active: !model.showFace }"
     @click="handleClick"
   >
@@ -23,7 +11,7 @@
 
 <script>
 export default {
-  name: "Card",
+  name: "NemoryCard",
 
   props: {
     model: {
